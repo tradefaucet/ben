@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEN Token | Decentralized Mining on MST Blockchain</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#0b1120',
+                        cardBg: '#161f33',
+                        accentBlue: '#2563eb',
+                        accentGreen: '#10b981',
+                        accentYellow: '#facc15',
+                        textMuted: '#94a3b8'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b1120;
+            color: #ffffff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        /* Custom Coin Graphic */
+        .coin-graphic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #facc15 0%, #2563eb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 50px rgba(37, 99, 235, 0.4), inset 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+            margin: 0 auto;
+        }
+        .coin-inner {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: #0b1120;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid rgba(250, 204, 21, 0.3);
+        }
+        .coin-text {
+            font-size: 4rem;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 2px #facc15;
+            text-shadow: 0 4px 10px rgba(250, 204, 21, 0.3);
+            letter-spacing: 2px;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        /* Gradient Text */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #facc15, #2563eb);
+        }
+        
+        /* Modal Transition */
+        .modal-enter {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Scrollbar for modal */
+        .modal-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-scroll::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05); 
+            border-radius: 10px;
+        }
+        .modal-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.2); 
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-darkBg/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accentYellow to-accentBlue flex items-center justify-center font-bold text-darkBg text-xl">B</div>
+                    <span class="font-bold text-2xl tracking-wider">BEN<span class="text-accentBlue">Token</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#features" class="text-textMuted hover:text-white transition">Features</a>
+                        <a href="#how-it-works" class="text-textMuted hover:text-white transition">How it Works</a>
+                        <a href="#contract" class="text-textMuted hover:text-white transition">Contract</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="https://drive.google.com/file/d/1QJxMXUsM1AmO9xAS1EApPvHJKEJI1It_/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="bg-accentBlue hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-semibold transition shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+                        Launch App
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-accentBlue/10 rounded-full blur-3xl -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accentBlue/20 border border-accentBlue/30 text-accentBlue text-sm font-semibold mb-6">
+                        <span class="w-2 h-2 rounded-full bg-accentBlue animate-pulse"></span>
+                        Live on MST Mainnet
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight mb-6">
+                        Mine <span class="text-gradient">BEN Tokens</span> on Your Phone.
+                    </h1>
+                    <p class="text-lg text-textMuted mb-8 max-w-lg mx-auto lg:mx-0">
+                        Experience the future of decentralized mining. Our non-custodial wallet and high-efficiency mobile miner allow you to earn BEN tokens directly on the MST Blockchain without draining your battery.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <!-- Updated Download Button with Link -->
+                        <a href="https://drive.google.com/file/d/1QJxMXUsM1AmO9xAS1EApPvHJKEJI1It_/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="bg-accentBlue hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                            <i class="fas fa-download"></i> Download App
+                        </a>
+                        <a href="#features" class="bg-cardBg hover:bg-gray-800 border border-white/10 text-white px-8 py-4 rounded-xl font-bold text-lg transition flex items-center justify-center gap-2">
+                            Learn More
+                        </a>
+                    </div>
+                    
+                    <!-- Mini Stats -->
+                    <div class="mt-12 grid grid-cols-3 gap-4 border-t border-white/10 pt-6 max-w-md mx-auto lg:mx-0">
+                        <div>
+                            <div class="text-2xl font-bold text-white">15.88</div>
+                            <div class="text-xs text-textMuted uppercase tracking-wider mt-1">MH/s Hash Rate</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-white">12k+</div>
+                            <div class="text-xs text-textMuted uppercase tracking-wider mt-1">Active Peers</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-accentGreen">+1.12</div>
+                            <div class="text-xs text-textMuted uppercase tracking-wider mt-1">BEN/Session</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Graphic (Coin) -->
+                <div class="flex justify-center relative">
+                    <div class="coin-graphic">
+                        <div class="coin-inner">
+                            <span class="coin-text">BEN</span>
+                            <span class="text-xs text-accentYellow tracking-widest mt-2 uppercase font-bold">MST Blockchain</span>
+                        </div>
+                    </div>
+                    <!-- Floating elements -->
+                    <div class="absolute top-10 right-10 bg-cardBg p-4 rounded-xl border border-white/10 shadow-xl animate-bounce hidden md:block" style="animation-duration: 3s;">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-accentGreen/20 flex items-center justify-center text-accentGreen"><i class="fas fa-arrow-down"></i></div>
+                            <div>
+                                <div class="text-xs text-textMuted">Wallet Balance</div>
+                                <div class="font-bold">1,109.12 BEN</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-[#0d1526]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Everything You Need to <span class="text-accentBlue">Earn</span></h2>
+                <p class="text-textMuted text-lg">The BEN app provides a complete suite of tools for mining, managing, and transferring your digital assets seamlessly.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-cardBg p-8 rounded-2xl border border-white/5 hover:border-accentBlue/30 transition duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-accentBlue/10 flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-bolt text-2xl text-accentBlue"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mobile Mining</h3>
+                    <p class="text-textMuted leading-relaxed">Start mining instantly with our optimized algorithm. Track your Hash Rate, Session Timer, and mined rewards in real-time.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-cardBg p-8 rounded-2xl border border-white/5 hover:border-accentGreen/30 transition duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-accentGreen/10 flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-wallet text-2xl text-accentGreen"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Non-Custodial Wallet</h3>
+                    <p class="text-textMuted leading-relaxed">Your keys, your crypto. Send and receive BEN tokens securely on the MST Mainnet with our native, live on-chain wallet.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-cardBg p-8 rounded-2xl border border-white/5 hover:border-accentYellow/30 transition duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-accentYellow/10 flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-faucet text-2xl text-accentYellow"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Daily Faucet & Boosts</h3>
+                    <p class="text-textMuted leading-relaxed">Supercharge your mining. Watch short ads to claim +2 BEN daily or activate a 1.5x - 2x boost to maximize your session rewards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works / Dashboard Info -->
+    <section id="how-it-works" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Info Content -->
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Seamless Withdrawal to Mainnet</h2>
+                    <p class="text-textMuted text-lg mb-8">
+                        Transfer your mined testnet tokens securely. Our admin-verified payout system ensures that all requests are processed accurately on the official Mainnet contract.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="mt-1 w-8 h-8 rounded-full bg-accentBlue/20 flex items-center justify-center text-accentBlue font-bold flex-shrink-0">1</div>
+                            <div>
+                                <h4 class="font-bold text-lg">Mine & Accumulate</h4>
+                                <p class="text-textMuted text-sm">Run mining sessions and accumulate BEN tokens in your app wallet.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 w-8 h-8 rounded-full bg-accentBlue/20 flex items-center justify-center text-accentBlue font-bold flex-shrink-0">2</div>
+                            <div>
+                                <h4 class="font-bold text-lg">Submit Request</h4>
+                                <p class="text-textMuted text-sm">Initiate a withdrawal request to transfer your tokens to the Mainnet contract.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 w-8 h-8 rounded-full bg-accentGreen/20 flex items-center justify-center text-accentGreen font-bold flex-shrink-0"><i class="fas fa-check"></i></div>
+                            <div>
+                                <h4 class="font-bold text-lg">Admin Approval</h4>
+                                <p class="text-textMuted text-sm">Requests are verified and processed via the Admin Panel for maximum security.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wallet Mockup Data (Card) -->
+                <div class="bg-cardBg p-8 rounded-3xl border border-white/10 shadow-2xl relative">
+                    <div class="absolute -top-4 -right-4 bg-accentGreen text-darkBg font-bold px-4 py-1 rounded-full text-sm shadow-lg">Live On-Chain</div>
+                    
+                    <div class="mb-8">
+                        <div class="text-sm text-textMuted mb-1">BEN BALANCE</div>
+                        <div class="text-4xl font-extrabold">1,109.1253 <span class="text-xl text-accentBlue">BEN</span></div>
+                        <div class="text-xs text-textMuted mt-2">Native MST Blockchain Asset</div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 mb-6">
+                        <div class="bg-accentBlue text-white text-center py-3 rounded-xl font-bold flex items-center justify-center gap-2 cursor-pointer hover:bg-blue-700">
+                            <i class="fas fa-paper-plane"></i> Send
+                        </div>
+                        <div class="bg-darkBg border border-white/10 text-white text-center py-3 rounded-xl font-bold flex items-center justify-center gap-2 cursor-pointer hover:bg-white/5">
+                            <i class="fas fa-download text-accentBlue"></i> Receive
+                        </div>
+                    </div>
+
+                    <div class="bg-darkBg p-4 rounded-xl border border-white/5 mb-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-accentGreen/20 flex items-center justify-center text-accentGreen">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-sm">Daily MST Faucet</div>
+                                <div class="text-[10px] text-textMuted">Watch ad to claim +2 BEN</div>
+                            </div>
+                        </div>
+                        <button class="bg-accentGreen text-darkBg text-xs font-bold px-4 py-2 rounded-lg hover:bg-emerald-400 transition">Claim</button>
+                    </div>
+
+                    <div class="border-t border-white/10 pt-4">
+                        <div class="text-xs text-textMuted mb-2 uppercase tracking-wider font-bold">Recent Request</div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span>416.0000 BEN</span>
+                            <span class="text-accentGreen bg-accentGreen/10 px-2 py-1 rounded text-xs font-bold border border-accentGreen/20">APPROVED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Contract Section -->
+    <section id="contract" class="py-16 bg-gradient-to-r from-accentBlue/10 to-accentYellow/10 border-y border-white/10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">Official Token Contract</h3>
+            <p class="text-textMuted mb-8">Verify our smart contract on the MST Blockchain. Always ensure you are interacting with the correct address.</p>
+            
+            <div class="bg-darkBg p-4 md:p-6 rounded-2xl border border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 max-w-2xl mx-auto shadow-2xl">
+                <div class="flex items-center gap-3 w-full md:w-auto overflow-hidden">
+                    <div class="w-10 h-10 rounded-full bg-accentYellow/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-file-contract text-accentYellow"></i>
+                    </div>
+                    <div class="text-left w-full overflow-hidden">
+                        <div class="text-[10px] text-textMuted uppercase font-bold tracking-wider">Token Contract (MST)</div>
+                        <div class="font-mono text-sm text-blue-400 truncate">0xa420068aab07c32fdf5390f32673925b16d58139</div>
+                    </div>
+                </div>
+                <button onclick="copyContract()" class="bg-cardBg hover:bg-white/10 text-white border border-white/10 px-6 py-2.5 rounded-xl text-sm font-semibold transition flex items-center gap-2 w-full md:w-auto justify-center" id="copyBtn">
+                    <i class="far fa-copy"></i> <span>Copy Address</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darkBg py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-accentYellow to-accentBlue flex items-center justify-center font-bold text-darkBg text-sm">B</div>
+                <span class="font-bold text-lg">BEN Token</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 text-textMuted text-sm">
+                <button onclick="openModal('privacy')" class="hover:text-white transition">Privacy Policy</button>
+                <button onclick="openModal('terms')" class="hover:text-white transition">Terms of Service</button>
+                <button onclick="openModal('contact')" class="hover:text-white transition">Contact</button>
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="w-10 h-10 rounded-full bg-cardBg flex items-center justify-center text-textMuted hover:text-white hover:bg-accentBlue transition"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-cardBg flex items-center justify-center text-textMuted hover:text-white hover:bg-accentBlue transition"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-cardBg flex items-center justify-center text-textMuted hover:text-white hover:bg-accentBlue transition"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-center text-xs text-textMuted">
+            &copy; 2026 BEN Token. All rights reserved. Built on MST Blockchain.
+        </div>
+    </footer>
+
+    <!-- ==================== MODAL SYSTEM ==================== -->
+    <div id="info-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center hidden p-4">
+        <div class="bg-cardBg max-w-2xl w-full rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col max-h-[85vh] modal-enter relative">
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-white/10 flex justify-between items-center bg-[#0d1526]">
+                <h2 id="modal-title" class="text-2xl font-bold text-white">Title</h2>
+                <button onclick="closeModal()" class="text-textMuted hover:text-white transition p-2 rounded-full hover:bg-white/10">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <!-- Modal Content -->
+            <div id="modal-content" class="p-6 overflow-y-auto text-textMuted text-sm leading-relaxed modal-scroll space-y-4">
+                <!-- Content will be injected here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // --- 1. Copy Contract Functionality ---
+        function copyContract() {
+            const contractAddress = '0xa420068aab07c32fdf5390f32673925b16d58139';
+            navigator.clipboard.writeText(contractAddress).then(() => {
+                const btn = document.getElementById('copyBtn');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check text-accentGreen"></i> <span>Copied!</span>';
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                }, 2000);
+            });
+        }
+
+        // --- 2. Modal Data (Auto-Generated Content) ---
+        const modalData = {
+            privacy: {
+                title: 'Privacy Policy',
+                content: `
+                    <p class="mb-4">Last updated: ${new Date().toLocaleDateString()}</p>
+                    <p class="mb-4">At BEN Token, we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your information when you use our mobile application and website.</p>
+                    
+                    <h4 class="text-white font-bold text-base mt-6 mb-2">1. Information We Collect</h4>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li><strong>Blockchain Data:</strong> When you connect a wallet, your public wallet address is visible on the blockchain. We do not have access to your private keys or funds.</li>
+                        <li><strong>Usage Data:</strong> We may collect anonymous data about your app usage, such as mining session times, hash rates, and device type to improve our services.</li>
+                        <li><strong>Cookies:</strong> Our website uses essential cookies to ensure basic functionality and analytics.</li>
+                    </ul>
+
+                    <h4 class="text-white font-bold text-base mt-6 mb-2">2. How We Use Your Information</h4>
+                    <p class="mb-4">We use the collected information to operate the mining app, process withdrawal requests, prevent fraudulent activity, and improve user experience.</p>
+
+                    <h4 class="text-white font-bold text-base mt-6 mb-2">3. Data Security</h4>
+                    <p class="mb-4">We implement industry-standard security measures. However, please remember that no method of transmission over the internet or electronic storage is 100% secure.</p>
+                `
+            },
+            terms: {
+                title: 'Terms of Service',
+                content: `
+                    <p class="mb-4">Last updated: ${new Date().toLocaleDateString()}</p>
+                    <p class="mb-4">By downloading or using the BEN Token app, you agree to these Terms of Service. Please read them carefully.</p>
+                    
+                    <h4 class="text-white font-bold text-base mt-6 mb-2">1. Acceptance of Terms</h4>
+                    <p class="mb-4">Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service.</p>
+
+                    <h4 class="text-white font-bold text-base mt-6 mb-2">2. Cryptocurrency Risks</h4>
+                    <p class="mb-4">You acknowledge that cryptocurrency and mining involve significant risk. The value of tokens can fluctuate. You are solely responsible for your digital wallet and private keys. We are not liable for any loss of funds.</p>
+
+                    <h4 class="text-white font-bold text-base mt-6 mb-2">3. Fair Use Policy</h4>
+                    <p class="mb-4">You agree not to use automated scripts, bots, or exploits to manipulate the mining process or the daily faucet. Accounts suspected of cheating will be banned and withdrawals rejected.</p>
+
+                    <h4 class="text-white font-bold text-base mt-6 mb-2">4. Withdrawal Processing</h4>
+                    <p class="mb-4">Withdrawals to the Mainnet are subject to manual verification by the Admin Panel. We reserve the right to delay or reject requests suspected of fraud or network congestion.</p>
+                `
+            },
+            contact: {
+                title: 'Contact Us',
+                content: `
+                    <div class="text-center py-8">
+                        <div class="w-20 h-20 rounded-full bg-accentBlue/20 flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-envelope text-3xl text-accentBlue"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">We'd love to hear from you!</h3>
+                        <p class="mb-6">If you have any questions, feedback, or need support regarding your BEN tokens, mining sessions, or withdrawals, please reach out to our team.</p>
+                        
+                        <a href="mailto:tradefaucet@gmail.com" class="inline-flex items-center gap-3 bg-cardBg border border-white/10 hover:border-accentBlue hover:bg-white/5 text-white px-8 py-4 rounded-xl font-mono text-lg transition duration-300 shadow-xl">
+                            <i class="fas fa-paper-plane text-accentBlue"></i>
+                            tradefaucet@gmail.com
+                        </a>
+                        
+                        <p class="mt-8 text-xs text-textMuted">We aim to respond to all inquiries within 24-48 hours.</p>
+                    </div>
+                `
+            }
+        };
+
+        // --- 3. Modal Controls ---
+        const modal = document.getElementById('info-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+
+        function openModal(type) {
+            if (modalData[type]) {
+                modalTitle.textContent = modalData[type].title;
+                modalContent.innerHTML = modalData[type].content;
+                
+                // Show modal
+                modal.classList.remove('hidden');
+                // Prevent body scrolling when modal is open
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            // Restore body scrolling
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal if clicking outside the content box
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
