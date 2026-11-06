@@ -104,6 +104,61 @@
             background: rgba(255,255,255,0.2); 
             border-radius: 10px;
         }
+
+        /* Modern Telegram Button */
+        .telegram-btn {
+            background: linear-gradient(145deg, #229ED9, #1c8fc7);
+            box-shadow: 0 8px 20px rgba(34, 158, 217, 0.3), 0 2px 4px rgba(0,0,0,0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .telegram-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transition: left 0.5s;
+        }
+        .telegram-btn:hover::before {
+            left: 100%;
+        }
+        .telegram-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 28px rgba(34, 158, 217, 0.45), 0 4px 10px rgba(0,0,0,0.2);
+            background: linear-gradient(145deg, #2aa7e0, #1f9ed4);
+        }
+        .telegram-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+        .telegram-btn i {
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        /* Whitepaper button */
+        .paper-btn {
+            background: transparent;
+            border: 1.5px solid rgba(250, 204, 21, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .paper-btn:hover {
+            background: rgba(250, 204, 21, 0.1);
+            border-color: #facc15;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
+            transform: translateY(-2px);
+        }
+        .paper-btn i {
+            transition: transform 0.3s ease;
+        }
+        .paper-btn:hover i {
+            transform: translateX(4px);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -150,18 +205,22 @@
                     <p class="text-lg text-textMuted mb-8 max-w-lg mx-auto lg:mx-0">
                         Experience the future of decentralized mining. Our non-custodial wallet and high-efficiency mobile miner allow you to earn BEN tokens directly on the MST Blockchain without draining your battery.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <!-- Updated Download Button with Link -->
-                        <a href="https://drive.google.com/file/d/1frRa4rhSs_lcK7HYhHAQNcRXMfnn3Lzq/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="bg-accentBlue hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,99,235,0.4)]">
-                            <i class="fas fa-download"></i> Download App
+                    
+                    <!-- BUTTONS: Telegram + Whitepaper -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+                        <!-- Telegram Button - Modern Style -->
+                        <a href="https://telegram.me/benmines" target="_blank" rel="noopener noreferrer" class="telegram-btn text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
+                            <i class="fab fa-telegram text-2xl"></i> Join Telegram
                         </a>
-                        <a href="#features" class="bg-cardBg hover:bg-gray-800 border border-white/10 text-white px-8 py-4 rounded-xl font-bold text-lg transition flex items-center justify-center gap-2">
-                            Learn More
-                        </a>
+                        
+                        <!-- Whitepaper Button -->
+                        <button onclick="openModal('whitepaper')" class="paper-btn text-accentYellow px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
+                            <i class="fas fa-file-alt"></i> Whitepaper
+                        </button>
                     </div>
                     
                     <!-- Mini Stats -->
-                    <div class="mt-12 grid grid-cols-3 gap-4 border-t border-white/10 pt-6 max-w-md mx-auto lg:mx-0">
+                    <div class="grid grid-cols-3 gap-4 border-t border-white/10 pt-6 max-w-md mx-auto lg:mx-0">
                         <div>
                             <div class="text-2xl font-bold text-white">15.88</div>
                             <div class="text-xs text-textMuted uppercase tracking-wider mt-1">MH/s Hash Rate</div>
@@ -355,9 +414,13 @@
                 <button onclick="openModal('contact')" class="hover:text-white transition">Contact</button>
             </div>
             <div class="flex gap-4">
-                <a href="#" class="w-10 h-10 rounded-full bg-cardBg flex items-center justify-center text-textMuted hover:text-white hover:bg-accentBlue transition"><i class="fab fa-twitter"></i></a>
-                <a href="https://telegram.me/benmines" class="w-10 h-10 rounded-full bg-cardBg flex items-center justify-center text-textMuted hover:text-white hover:bg-accentBlue transition"><i class="fab fa-telegram"></i></a>
-                <a href="#" class="w-10 h-10 rounded-full bg-cardBg flex items-center justify-center text-textMuted hover:text-white hover:bg-accentBlue transition"><i class="fab fa-discord"></i></a>
+                <!-- Only Telegram icon + Whitepaper link in footer -->
+                <a href="https://telegram.me/benmines" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-cardBg flex items-center justify-center text-textMuted hover:text-white hover:bg-[#229ED9] transition" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <button onclick="openModal('whitepaper')" class="w-10 h-10 rounded-full bg-cardBg flex items-center justify-center text-textMuted hover:text-white hover:bg-accentYellow/20 transition" aria-label="Whitepaper">
+                    <i class="fas fa-file-alt"></i>
+                </button>
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-center text-xs text-textMuted">
@@ -454,6 +517,57 @@
                         </a>
                         
                         <p class="mt-8 text-xs text-textMuted">We aim to respond to all inquiries within 24-48 hours.</p>
+                    </div>
+                `
+            },
+            whitepaper: {
+                title: 'BEN Token Whitepaper',
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-xs text-accentYellow uppercase tracking-widest font-bold">Version 1.0 — February 2026</p>
+                        
+                        <h3 class="text-xl font-bold text-white mb-2">Executive Summary</h3>
+                        <p>BEN Token is a decentralized, mobile-first cryptocurrency built on the MST Blockchain. It enables users to mine tokens on their smartphones with a highly efficient algorithm, while maintaining full non-custodial control of their assets. Our mission is to make crypto mining accessible to everyone, without specialized hardware or technical expertise.</p>
+                        
+                        <h3 class="text-xl font-bold text-white mt-6 mb-2">1. Introduction</h3>
+                        <p>Traditional cryptocurrency mining requires expensive ASIC hardware and consumes enormous amounts of energy. BEN Token disrupts this model by leveraging the MST Blockchain's low-fee, high-throughput consensus to enable lightweight mobile mining. Users earn BEN by keeping the app active and verifying lightweight proofs, with rewards settled directly on-chain.</p>
+                        
+                        <h3 class="text-xl font-bold text-white mt-6 mb-2">2. Tokenomics</h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><strong>Total Supply:</strong> 100000000000 BEN (fixed, no inflation)</li>
+                            <li><strong>Mining Rewards:</strong> 60% — distributed over 10 years via mobile mining sessions</li>
+                            <li><strong>Liquidity & Listing:</strong> 20% — reserved for DEX/CEX listings and liquidity pools</li>
+                            <li><strong>Ecosystem & Faucets:</strong> 10% — daily faucet, boosts, and community airdrops</li>
+                            <li><strong>Team & Development:</strong> 5% — vested over 24 months with a 6-month cliff</li>
+                            <li><strong>Marketing & Partnerships:</strong> 5% — allocated to growth initiatives</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold text-white mt-6 mb-2">3. Mobile Mining Mechanism</h3>
+                        <p>The BEN app performs lightweight cryptographic hashing that is verifiable by MST full nodes. Each mining session is capped at 4hours, after which the user must restart (or use a boost to extend). Rewards are calculated based on session duration, hash rate, and active peer count. An anti-cheat system detects emulators and automated scripts.</p>
+                        
+                        <h3 class="text-xl font-bold text-white mt-6 mb-2">4. Non-Custodial Wallet</h3>
+                        <p>BEN uses a native HD wallet where private keys are encrypted and stored locally on the user's device. The app never transmits keys to any server. Users can send, receive, BEN tokens on the MST Mainnet, with all transactions signed locally.</p>
+                        
+                        <h3 class="text-xl font-bold text-white mt-6 mb-2">5. Withdrawal & Admin Verification</h3>
+                        <p>To protect against fraud and ensure Mainnet integrity, withdrawal requests from the in-app wallet to the Mainnet contract are queued for manual verification by the Admin Panel. Each request is checked against the user's mining history and anti-fraud score. Approved requests are settled within 24–48 hours.</p>
+                        
+                        <h3 class="text-xl font-bold text-white mt-6 mb-2">6. Security & Audits</h3>
+                        <p>The BEN smart contract has been internally audited and is open-source. We employ multi-signature wallets for treasury management and conduct regular penetration testing of the mobile app. User funds in non-custodial wallets are always under the user's sole control.</p>
+                        
+                        <h3 class="text-xl font-bold text-white mt-6 mb-2">7. Roadmap</h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><strong>Q1 2026:</strong> Mainnet launch, mobile mining app v1.0, Telegram community</li>
+                            <li><strong>Q2 2026:</strong> DEX listing, faucet & boost system, admin panel v2</li>
+                            <li><strong>Q3 2026:</strong> Staking pools, referral program, cross-chain bridge (MST ↔ ETH)</li>
+                            <li><strong>Q4 2026:</strong> CEX listing, hardware wallet integration, governance DAO</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold text-white mt-6 mb-2">8. Conclusion</h3>
+                        <p>BEN Token represents a new paradigm for mobile cryptocurrency: fair, accessible, and community-driven. With a fixed supply, transparent tokenomics, and a relentless focus on user experience, BEN is positioned to become the leading mobile-mined asset on the MST Blockchain.</p>
+                        
+                        <div class="mt-8 p-4 bg-darkBg rounded-xl border border-white/10 text-center">
+                            <p class="text-xs text-textMuted">© 2026 BEN Token — All rights reserved. This whitepaper is for informational purposes only and does not constitute financial advice.</p>
+                        </div>
                     </div>
                 `
             }
